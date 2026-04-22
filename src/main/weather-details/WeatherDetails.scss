@@ -1,0 +1,24 @@
+.weather_details {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 175px));
+  gap: 24px;
+  &_card {
+    max-width: 140px;
+    width: 100%;
+    background-color: #262540;
+    border-radius: 12px;
+    padding: 20px;
+
+    &-label {
+      color: #d4d3d9;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+    &-value {
+      font-size: 32px;
+      color: #fff;
+      font-weight: 300;
+    }
+  }
+}

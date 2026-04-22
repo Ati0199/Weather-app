@@ -1,0 +1,18 @@
+// @import url("./../../index.scss");
+.units_block {
+  position: relative;
+}
+.units {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  gap: 10px;
+  background-color: #262540;
+  border-radius: 8px;
+  cursor: pointer;
+  &_title {
+    color: #fff;
+    font-family: "Dm-Sans";
+    font-weight: 500;
+  }
+}

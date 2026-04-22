@@ -1,0 +1,33 @@
+.hourly_forecast {
+  &_card {
+    animation: cardsAnimation 0.2s ease;
+
+    height: fit-content;
+    background-color: #302f4a;
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+  &_icon-time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  &_icon {
+    width: 40px;
+    height: 40px;
+  }
+  &_time {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  &_temperature {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 4 00;
+  }
+}

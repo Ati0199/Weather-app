@@ -1,0 +1,29 @@
+.daily_forecast {
+  &_card {
+    display: grid;
+    place-items: center;
+    row-gap: 16px;
+    background-color: #262540;
+    border-radius: 12px;
+    padding: 16px 10px;
+  }
+  .daily_title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+  }
+  .daily_icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .daily_temperature {
+    display: flex;
+    gap: 20px;
+    .max_temp,
+    .min_temp {
+      color: #fff;
+      font-weight: 500;
+    }
+  }
+}

@@ -1,0 +1,96 @@
+.hourly_forecast {
+  background-color: #262540;
+  border-radius: 20px;
+  padding: 24px 0px 24px 24px;
+
+  &_cards {
+    animation: cardsAnimation 0.2s ease;
+
+    padding-right: 20px;
+    margin-top: 16px;
+    display: grid;
+    grid-template-rows: repeat(24, 60px);
+    row-gap: 16px;
+    max-height: 700px;
+    overflow-y: scroll;
+  }
+
+  &_header {
+    padding-right: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+  &_title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  &_dropdown {
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 8px 16px;
+    background-color: #3c3b5e;
+  }
+  &_day {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 12px;
+  }
+}
+
+.days_dropdown {
+  border: 1px solid #3c3b5e;
+  max-width: 215px;
+  width: 100%;
+  z-index: 10000;
+  position: absolute;
+  top: 52px;
+  right: 0;
+  display: grid;
+  row-gap: 4px;
+  background-color: #262540;
+  border-radius: 12px;
+  padding: 8px;
+  &_title {
+    padding: 10px 8px;
+    font-weight: 500;
+    color: #fff;
+    transition: all 0.1s linear;
+    &:hover {
+      cursor: pointer;
+      border-radius: 12px;
+      background-color: #302f4a;
+      padding: 10px 8px;
+    }
+  }
+}
+.active {
+  cursor: pointer;
+  border-radius: 12px;
+  background-color: #302f4a;
+  padding: 10px 8px;
+}
+// .hourly_forecast_cards::-webkit-scrollbar-button {
+//   display: block;
+// }
+.hourly_forecast_cards::-webkit-scrollbar-thumb {
+  background: #8793e6;
+  border-radius: 12px;
+}
+
+.hourly_forecast_cards::-webkit-scrollbar {
+  width: 6px;
+}
+
+@keyframes cardsAnimation {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}

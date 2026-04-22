@@ -1,0 +1,70 @@
+.search {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  max-width: 660px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 64px;
+  margin-bottom: 48px;
+
+  &_input {
+    max-width: 525px;
+    width: 100%;
+    background-color: #262540;
+    color: aqua;
+    padding-left: 60px;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 16px 0px 16px 60px;
+    color: #d4d3d9;
+    border: none;
+    border-radius: 12px;
+    &::placeholder {
+      color: #d4d3d9;
+      font-family: "Dm-Sans";
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &_icon {
+    position: absolute;
+    top: 17px;
+    left: 24px;
+  }
+  &_btn {
+    padding: 16px 24px;
+    background-color: #4658d9;
+    font-size: 20px;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+  }
+  &_dropdown {
+    display: grid;
+    row-gap: 4px;
+    top: 70px;
+    left: 0;
+    position: absolute;
+    width: 515px;
+    border-radius: 12px;
+    background-color: #262540;
+    padding: 8px;
+  }
+}
+.city,
+.loading {
+  color: #fff;
+  font-weight: 500;
+  line-height: 120%;
+  padding: 10px 0px 10px 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+.city:hover {
+  cursor: pointer;
+  background-color: #302f4a;
+}

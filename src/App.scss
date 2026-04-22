@@ -1,0 +1,50 @@
+.container {
+  max-width: 1200px;
+  // width: 100%;
+  margin: 0 auto;
+  padding-inline: 20px;
+}
+
+.header {
+  margin-top: 48px;
+  margin-bottom: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.title {
+  color: #fff;
+  font-family: "Bricolage-Grotesque";
+  text-align: center;
+  font-weight: bold;
+  font-size: 52px;
+}
+
+.main_content {
+  display: flex;
+  gap: 32px;
+  .left_content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 800px));
+    max-width: 800px;
+    width: 100%;
+  }
+}
+.right_content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 380px));
+  max-width: 100%;
+  width: 385px;
+}
+
+@media screen and (max-width: 1240px) {
+  .main_content {
+    display: grid;
+    place-items: center;
+    .right_content {
+      display: block;
+      max-width: 800px;
+      width: 100%;
+    }
+  }
+}
