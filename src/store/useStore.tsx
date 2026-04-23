@@ -3,6 +3,7 @@ import { type IWeatherData } from "../App";
 
 import { getWeek } from "../functions/Functions";
 import { type IUnits } from "../types";
+
 interface IUseClick {
   click: boolean;
   uptadeClick: () => void;
@@ -45,15 +46,29 @@ export const useDataUnit = create<IUnits>((set) => ({
   temperature_unit: "celsius",
   wind_speed_unit: "kmh",
   precipitation_unit: "mm",
-  uptadeUnit: (
-    temperature_unit?: IUnits["temperature_unit"],
-    wind_speed_unit?: IUnits["wind_speed_unit"],
-    precipitation_unit?: IUnits["precipitation_unit"],
+  uptadeFullUnit: (
+    temperature_unit: IUnits["temperature_unit"],
+    wind_speed_unit: IUnits["wind_speed_unit"],
+    precipitation_unit: IUnits["precipitation_unit"],
   ) => set(() => ({ temperature_unit, wind_speed_unit, precipitation_unit })),
+  uptadeTempUnit: (temperature_unit: IUnits["temperature_unit"]) =>
+    set(() => ({ temperature_unit })),
+  uptadeWindSpeedUnit: (wind_speed_unit: IUnits["wind_speed_unit"]) =>
+    set(() => ({ wind_speed_unit })),
+  uptadePrecipotationUnit: (precipitation_unit: IUnits["precipitation_unit"]) =>
+    set(() => ({ precipitation_unit })),
 }));
 
-// const { getWeather, loading } = useService();
-// export const useServiceHook = create<IUseServiceHook>((set) => ({
-//   getWeather: getWeather,
-//   loading: loading,
-// }));
+interface IUseServiceHook {
+  loading: boolean;
+  error: string;
+  uptadeLoading: (loading: boolean) => void;
+  uptadeError: (error: string) => void;
+}
+
+export const useServiceHook = create<IUseServiceHook>((set) => ({
+  loading: false,
+  error: "",
+  uptadeLoading: (loading: boolean) => set(() => ({ loading })),
+  uptadeError: (error: string) => set(() => ({ error })),
+}));

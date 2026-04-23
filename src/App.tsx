@@ -1,5 +1,7 @@
 import "./App.scss";
 import "./normalize.css";
+import { v4 as uuidv4 } from "uuid";
+
 import Logo from "./header/logo/Logo";
 import Units from "./header/units/Units";
 import Search from "./main/search/Search";
@@ -7,6 +9,9 @@ import WeatherInfo from "./main/weather-Info/WeatherInfo";
 import HourlyForecast from "./main/hourly-forecast/HourlyForecast";
 import WeatherDetails from "./main/weather-details/WeatherDetails";
 import DailyForecast from "./main/daily-forecast/DailyForecast";
+
+import WeatherInfoSkeleton from "./weather-info-skeleton/WeatherInfoSkeleton";
+
 import useService from "./service/service";
 import { useEffect } from "react";
 
@@ -37,6 +42,7 @@ export default function App() {
   //   dailyWeather: null,
   //   hourlyWeather: null,
   // });
+
   useEffect(() => {
     getWeather(
       41.6941,
@@ -45,7 +51,7 @@ export default function App() {
       `wind_speed_unit=${wind_speed_unit}`,
       `precipitation_unit=${precipitation_unit}`,
     ).then((data: any) => uptadeWeatherDate(data));
-  }, []);
+  }, [temperature_unit, wind_speed_unit, precipitation_unit]);
 
   return (
     <div className="container">
@@ -58,7 +64,7 @@ export default function App() {
         <Search getWeather={getWeather} loading={loading} />
         <div className="main_content">
           <div className="left_content">
-            <WeatherInfo loading={loading} />
+            {loading ? <WeatherInfoSkeleton /> : <WeatherInfo />}
             <WeatherDetails />
             <DailyForecast />
           </div>

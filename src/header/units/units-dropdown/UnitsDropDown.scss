@@ -36,6 +36,7 @@
       padding-top: 6px;
     }
     &_item {
+      position: relative;
       cursor: pointer;
       font-size: 16px;
       font-weight: 500;
@@ -59,5 +60,23 @@
   to {
     transform: translateY(0px);
     opacity: 1;
+  }
+}
+
+.active_unit {
+  cursor: pointer;
+  border-radius: 12px;
+  background-color: #302f4a;
+  padding: 10px 8px;
+  &::after {
+    content: "";
+    display: block;
+    background-image: url("../../../../assets/images/icon-checkmark.svg");
+    width: 14px;
+    height: 12px;
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translate(-50%, -50%);
   }
 }

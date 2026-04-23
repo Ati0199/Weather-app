@@ -6,11 +6,8 @@ import { weatherCodeImage } from "../../functions/Functions.tsx";
 import { useWeatherDateState } from "../../store/useStore.tsx";
 
 import "./WeatherInfo.scss";
-interface IProps {
-  loading: boolean;
-}
 
-export default function WeatherInfo({ loading }: IProps) {
+export default function WeatherInfo() {
   const weatherData = useWeatherDateState((state) => state.data);
 
   const month = new Date(
@@ -29,29 +26,23 @@ export default function WeatherInfo({ loading }: IProps) {
 
   if (!weatherData.currentWeather?.current.weather_code) return;
   return (
-    <>
-      {loading ? (
-        <div style={{ color: "#fff" }}>loading</div>
-      ) : (
-        <div className="weather_info">
-          <div className="location_info">
-            <h2 className="location">
-              {weatherData?.currentWeather?.timezone.replace("/", ", ")}
-            </h2>
-            <p className="date">{`${getWeek(week)}, ${getMonth(month)} ${day}, ${fullYear}`}</p>
-          </div>
-          <div className="weather_temperature">
-            {weatherCodeImage(
-              weatherData.currentWeather?.current.weather_code,
-              "weather_temperature_icon",
-            )}
-            <span className="weather_temperature_title">
-              {weatherData.currentWeather?.current.temperature_2m}
-              {weatherData.currentWeather.current_units.temperature_2m}
-            </span>
-          </div>
-        </div>
-      )}
-    </>
+    <div className="weather_info">
+      <div className="location_info">
+        <h2 className="location">
+          {weatherData?.currentWeather?.timezone.replace("/", ", ")}
+        </h2>
+        <p className="date">{`${getWeek(week)}, ${getMonth(month)} ${day}, ${fullYear}`}</p>
+      </div>
+      <div className="weather_temperature">
+        {weatherCodeImage(
+          weatherData.currentWeather?.current.weather_code,
+          "weather_temperature_icon",
+        )}
+        <span className="weather_temperature_title">
+          {weatherData.currentWeather?.current.temperature_2m}
+          {weatherData.currentWeather.current_units.temperature_2m}
+        </span>
+      </div>
+    </div>
   );
 }

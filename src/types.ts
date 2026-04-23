@@ -24,8 +24,8 @@ export interface IDailyWeather {
     weather_code: number[];
   };
   daily_units: {
-    temperature_2m_max: "°C" | "°F";
-    temperature_2m_min: "°C" | "°F";
+    temperature_2m_max: string;
+    temperature_2m_min: string;
   };
 }
 export interface IHourlyWeather {
@@ -35,17 +35,22 @@ export interface IHourlyWeather {
     weather_code: number[];
   };
   hourly_units: {
-    temperature_2m: "°C" | "°F";
+    temperature_2m: string;
   };
-}
+} //fahrenheit
 export interface IUnits {
   temperature_unit: "celsius" | "fahrenheit";
   wind_speed_unit: "mph" | "kmh";
   precipitation_unit: "inch" | "mm";
-  uptadeUnit: (
-    temperature_unit?: IUnits["temperature_unit"],
-    wind_speed_unit?: IUnits["wind_speed_unit"],
-    precipitation_unit?: IUnits["precipitation_unit"],
+  uptadeFullUnit: (
+    temperature_unit: IUnits["temperature_unit"],
+    wind_speed_unit: IUnits["wind_speed_unit"],
+    precipitation_unit: IUnits["precipitation_unit"],
+  ) => any;
+  uptadeTempUnit: (temperature_unit: IUnits["temperature_unit"]) => any;
+  uptadeWindSpeedUnit: (wind_speed_unit: IUnits["wind_speed_unit"]) => any;
+  uptadePrecipotationUnit: (
+    precipitation_unit: IUnits["precipitation_unit"],
   ) => any;
 }
 //precipitation_unit

@@ -1,4 +1,5 @@
 import { useDayClick } from "../../store/useStore";
+import { useServiceHook } from "../../store/useStore";
 
 import "./HourlyForecast.scss";
 import HourlyForecastCard from "./hourly-forecast-card/HourlyForecastCard";
@@ -9,6 +10,8 @@ import { useWeatherDateState } from "../../store/useStore";
 import { useGetHourlyDayOfWeak } from "../../store/useStore";
 
 export default function HourlyForecast() {
+  const loading = useServiceHook((state) => state.loading);
+
   const currentTime = useWeatherDateState(
     (state) => state.data.currentWeather?.current.time,
   );
@@ -32,15 +35,17 @@ export default function HourlyForecast() {
     hourlyWeather?.hourly.time as string[],
   ) as string[][];
   console.log(new Date().getHours());
-  console.log(22 % 12);
 
-  // console.log(2);
   return (
     <div className="hourly_forecast">
       <div className="hourly_forecast_header">
         <h2 className="hourly_forecast_title">Hourly forecast</h2>
         <div className="hourly_forecast_dropdown" onClick={uptadeClick}>
-          <span className="hourly_forecast_day">{day}</span>
+          {loading ? (
+            <span className="hourly_forecast_day">-</span>
+          ) : (
+            <span className="hourly_forecast_day">{day}</span>
+          )}
           <img src="../../../assets/images/icon-dropdown.svg" alt="" />
         </div>
         {click ? (

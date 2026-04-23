@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
-
-import type { IHourlyWeather, IUnits } from "../types";
+import type { IHourlyWeather } from "../types";
 
 export function getMonth(month: number): string {
   switch (month) {
@@ -284,11 +283,12 @@ export function getUnit(
   uptadeUnit: Function,
 ) {
   const unit = e.currentTarget.textContent;
-  console.log(unit);
-  console.log(unit.includes("Imperial"));
   if (unit.includes("Imperial")) uptadeUnit("fahrenheit", "mph", "inch");
   if (unit.includes("Metric")) uptadeUnit("celsius", "kmh", "mm");
-  // if(unit.includes("°C")){uptadeUnit("celsius");}
-  // if(unit.includes("°F")){uptadeUnit("fahrenheit")}
-  // if(unit.includes("km/h")){uptadeUnit("celsius","kmh")}
+  if (unit.includes("°F")) uptadeUnit("fahrenheit");
+  if (unit.includes("°C")) uptadeUnit("celsius");
+  if (unit.includes("km/h")) uptadeUnit("kmh");
+  if (unit.includes("mp/h")) uptadeUnit("mph");
+  if (unit.includes("Millimeters")) uptadeUnit("mm");
+  if (unit.includes("Inch")) uptadeUnit("inch");
 }

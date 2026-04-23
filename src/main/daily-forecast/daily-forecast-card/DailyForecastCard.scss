@@ -6,6 +6,12 @@
     background-color: #262540;
     border-radius: 12px;
     padding: 16px 10px;
+    &_skeleton {
+      width: 100px;
+      height: 163px;
+      background-color: #262540;
+      border-radius: 12px;
+    }
   }
   .daily_title {
     font-size: 18px;
@@ -19,7 +25,7 @@
 
   .daily_temperature {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
     .max_temp,
     .min_temp {
       color: #fff;

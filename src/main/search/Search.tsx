@@ -5,6 +5,7 @@ import {
 import "./Search.scss";
 import { cities } from "../../locations/locations";
 import { useWeatherDateState } from "../../store/useStore";
+import { useDataUnit } from "../../store/useStore";
 
 interface IProps {
   getWeather: (
@@ -18,7 +19,10 @@ interface IProps {
 }
 
 export default function Search({ getWeather, loading }: IProps) {
-  // const { getWeather } = useService();
+  const temperature_unit = useDataUnit((state) => state.temperature_unit);
+  const wind_speed_unit = useDataUnit((state) => state.wind_speed_unit);
+  const precipitation_unit = useDataUnit((state) => state.precipitation_unit);
+
   const [searchValue, setSearchValue] = useState<string>("");
   const uptadeWeatherDate = useWeatherDateState(
     (state) => state.uptadeWeatherDate,
@@ -39,13 +43,13 @@ export default function Search({ getWeather, loading }: IProps) {
     };
     getLocation();
   };
-  const test = async (latitude: number, longitude: number) => {
+  const getCity = async (latitude: number, longitude: number) => {
     const res: any = await getWeather(
       latitude,
       longitude,
-      "temperature_unit=celsius",
-      "wind_speed_unit=kmh",
-      "precipitation_unit=inch",
+      `temperature_unit=${temperature_unit}`,
+      `wind_speed_unit=${wind_speed_unit}`,
+      `precipitation_unit=${precipitation_unit}`,
     );
     uptadeWeatherDate(res);
   };
@@ -80,7 +84,7 @@ export default function Search({ getWeather, loading }: IProps) {
                 onClick={(e: React.MouseEvent<HTMLDivElement>) => {
                   setSearchValue("");
                   const target = e.currentTarget.textContent;
-                  test(
+                  getCity(
                     cities[target as keyof typeof cities].latitude,
                     cities[target as keyof typeof cities].longitude,
                   );
