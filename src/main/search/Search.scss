@@ -11,8 +11,8 @@
   margin-bottom: 48px;
 
   &_input {
-    max-width: 525px;
-    width: 100%;
+    width: 525px;
+
     background-color: #262540;
     color: aqua;
     padding-left: 60px;
@@ -44,6 +44,7 @@
     border-radius: 12px;
   }
   &_dropdown {
+    z-index: 1;
     display: grid;
     row-gap: 4px;
     top: 70px;
@@ -67,4 +68,14 @@
 .city:hover {
   cursor: pointer;
   background-color: #302f4a;
+}
+
+@media screen and (max-width: 470px) {
+  .search {
+    display: grid;
+    width: 100%;
+    &_input {
+      width: auto;
+    }
+  }
 }

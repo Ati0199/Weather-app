@@ -36,7 +36,7 @@ export default function Search({ getWeather, loading }: IProps) {
     setSearchValue(value);
     const getLocation = () => {
       const res = Object.keys(cities).filter((item) =>
-        item.includes(searchValue),
+        item.startsWith(searchValue.toLocaleLowerCase()),
       );
 
       setCITIES(res);

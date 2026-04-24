@@ -22,3 +22,13 @@
     }
   }
 }
+
+@media screen and (max-width: 430px) {
+  .weather_details {
+    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 155px));
+    &_card {
+      max-width: 120px;
+    }
+  }
+}

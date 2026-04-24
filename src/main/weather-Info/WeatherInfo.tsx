@@ -24,22 +24,23 @@ export default function WeatherInfo() {
     weatherData.currentWeather?.current.time as string,
   ).getDate();
 
-  if (!weatherData.currentWeather?.current.weather_code) return;
+  if (!weatherData.currentWeather?.current.weather_code)
+    return <div>loading</div>;
   return (
     <div className="weather_info">
       <div className="location_info">
         <h2 className="location">
-          {weatherData?.currentWeather?.timezone.replace("/", ", ")}
+          {weatherData?.currentWeather.timezone.replaceAll("/", ", ")}
         </h2>
         <p className="date">{`${getWeek(week)}, ${getMonth(month)} ${day}, ${fullYear}`}</p>
       </div>
       <div className="weather_temperature">
         {weatherCodeImage(
-          weatherData.currentWeather?.current.weather_code,
+          weatherData.currentWeather.current.weather_code,
           "weather_temperature_icon",
         )}
         <span className="weather_temperature_title">
-          {weatherData.currentWeather?.current.temperature_2m}
+          {weatherData.currentWeather.current.temperature_2m}
           {weatherData.currentWeather.current_units.temperature_2m}
         </span>
       </div>
