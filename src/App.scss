@@ -31,7 +31,7 @@
   gap: 32px;
   .left_content {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 800px));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 800px));
     max-width: 800px;
     width: 100%;
   }
@@ -41,6 +41,28 @@
   grid-template-columns: repeat(auto-fill, minmax(150px, 380px));
   max-width: 100%;
   width: 385px;
+}
+
+.pulse {
+  animation: pulse 1.5s infinite linear;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  25% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }
 
 @media screen and (max-width: 1240px) {

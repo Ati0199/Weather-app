@@ -40,3 +40,28 @@
     font-weight: 600;
   }
 }
+
+@media screen and (max-width: 670px) {
+  .weather_info {
+    background-image: url("../../../assets/images/bg-today-small.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: grid;
+    place-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 435px) {
+  .weather_temperature {
+    &_icon {
+      width: 80px;
+      height: 80px;
+    }
+    &_title {
+      color: #fff;
+      font-size: 64px;
+      font-weight: 600;
+    }
+  }
+}

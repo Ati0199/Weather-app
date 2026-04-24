@@ -38,7 +38,7 @@ export default function HourlyForecastCard() {
         return (
           <div key={i}>
             {loading ? (
-              <div className="hourly_forecast_card"></div>
+              <div className="hourly_forecast_card pulse"></div>
             ) : (
               <div key={i} className="hourly_forecast_card">
                 <div className="hourly_forecast_icon-time">

@@ -33,7 +33,7 @@ export default function DailyForecastCard({}) {
         return (
           <div key={uuidv4()}>
             {loading ? (
-              <div className="daily_forecast_card_skeleton"></div>
+              <div className="daily_forecast_card_skeleton pulse"></div>
             ) : (
               <div className="daily_forecast_card">
                 <span className="daily_title">
