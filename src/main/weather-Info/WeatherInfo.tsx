@@ -9,28 +9,17 @@ import "./WeatherInfo.scss";
 
 export default function WeatherInfo() {
   const weatherData = useWeatherDateState((state) => state.data);
-
-  const month = new Date(
-    weatherData.currentWeather?.current.time as string,
-  ).getMonth();
-  const week = new Date(
-    weatherData.currentWeather?.current.time as string,
-  ).getDay();
-
-  const fullYear = new Date(
-    weatherData.currentWeather?.current.time as string,
-  ).getFullYear();
-  const day = new Date(
-    weatherData.currentWeather?.current.time as string,
-  ).getDate();
-
-  if (!weatherData.currentWeather?.current.weather_code)
-    return <div>loading</div>;
+  if (!weatherData.currentWeather) return <div>loading</div>;
+  const data = new Date(weatherData.currentWeather.current.time);
+  const month = data.getMonth();
+  const week = data.getDay();
+  const fullYear = data.getFullYear();
+  const day = data.getDate();
   return (
     <div className="weather_info">
       <div className="location_info">
         <h2 className="location">
-          {weatherData?.currentWeather.timezone.replaceAll("/", ", ")}
+          {weatherData.currentWeather.timezone.replaceAll("/", ", ")}
         </h2>
         <p className="date">{`${getWeek(week)}, ${getMonth(month)} ${day}, ${fullYear}`}</p>
       </div>

@@ -7,7 +7,7 @@ import { hourlyInfoGetDay } from "../../functions/Functions";
 import { getWeek } from "../../functions/Functions";
 
 import { useWeatherDateState } from "../../store/useStore";
-import { useGetHourlyDayOfWeak } from "../../store/useStore";
+import { useGetHourlyDayOfWeek } from "../../store/useStore";
 
 export default function HourlyForecast() {
   const loading = useServiceHook((state) => state.loading);
@@ -20,16 +20,14 @@ export default function HourlyForecast() {
   );
 
   const click = useDayClick((state) => state.click);
-  const uptadeClick = useDayClick((state) => state.uptadeClick);
+  const updateClick = useDayClick((state) => state.updateClick);
 
-  const day = useGetHourlyDayOfWeak((state) => state.day);
+  const day = useGetHourlyDayOfWeek((state) => state.day);
 
-  // const index = useGetHourlyOfWeakIndex((state) => state.index);
-  const uptadeDayOfWeek = useGetHourlyDayOfWeak(
-    (state) => state.uptadeDayOfWeek,
+  const updateDayOfWeek = useGetHourlyDayOfWeek(
+    (state) => state.updateDayOfWeek,
   );
 
-  console.log(day);
   if (!currentTime) return <div>loading</div>;
   const timeInWeek = hourlyInfoGetDay(
     hourlyWeather?.hourly.time as string[],
@@ -40,7 +38,7 @@ export default function HourlyForecast() {
     <div className="hourly_forecast">
       <div className="hourly_forecast_header">
         <h2 className="hourly_forecast_title">Hourly forecast</h2>
-        <div className="hourly_forecast_dropdown" onClick={uptadeClick}>
+        <div className="hourly_forecast_dropdown" onClick={updateClick}>
           {loading ? (
             <span className="hourly_forecast_day">-</span>
           ) : (
@@ -59,8 +57,8 @@ export default function HourlyForecast() {
                   onClick={(e: React.SyntheticEvent<HTMLSpanElement>) => {
                     const day = e.currentTarget.textContent;
                     e.currentTarget.classList.add;
-                    uptadeDayOfWeek(day);
-                    uptadeClick();
+                    updateDayOfWeek(day);
+                    updateClick();
                   }}
                 >
                   {getWeek(i)}

@@ -7,7 +7,7 @@ export default function UnitsDropDown() {
   const uptadeTempUnit = useDataUnit((state) => state.uptadeTempUnit);
   const uptadeWindSpeedUnit = useDataUnit((state) => state.uptadeWindSpeedUnit);
   const uptadePrecipotationUnit = useDataUnit(
-    (state) => state.uptadePrecipotationUnit,
+    (state) => state.uptadePrecipitationUnit,
   );
 
   const temperature_unit = useDataUnit((state) => state.temperature_unit);

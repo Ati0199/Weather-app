@@ -4,10 +4,10 @@ import "./Units.scss";
 import UnitsDropDown from "./units-dropdown/UnitsDropDown";
 export default function Units() {
   const click = useUnitClick((state) => state.click);
-  const uptadeClick = useUnitClick((state) => state.uptadeClick);
+  const updateClick = useUnitClick((state) => state.updateClick);
 
   return (
-    <div className="units_block" onClick={uptadeClick}>
+    <div className="units_block" onClick={updateClick}>
       <div className="units">
         <img src="../../../assets/images/icon-units.svg" alt="" />
         <span className="units_title">Units</span>

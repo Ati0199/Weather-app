@@ -6,21 +6,21 @@ import { type IUnits } from "../types";
 
 interface IUseClick {
   click: boolean;
-  uptadeClick: () => void;
+  updateClick: () => void;
 }
 
 interface IUseWeatherData {
   data: IWeatherData;
-  uptadeWeatherDate: (data: any) => void;
+  updateWeatherDate: (data: IWeatherData) => void;
 }
 
 export const useUnitClick = create<IUseClick>((set) => ({
   click: false,
-  uptadeClick: () => set((state) => ({ click: !state.click })),
+  updateClick: () => set((state) => ({ click: !state.click })),
 }));
 export const useDayClick = create<IUseClick>((set) => ({
   click: false,
-  uptadeClick: () => set((state) => ({ click: !state.click })),
+  updateClick: () => set((state) => ({ click: !state.click })),
 }));
 
 export const useWeatherDateState = create<IUseWeatherData>((set) => ({
@@ -29,17 +29,17 @@ export const useWeatherDateState = create<IUseWeatherData>((set) => ({
     dailyWeather: null,
     hourlyWeather: null,
   },
-  uptadeWeatherDate: (data: any) => set(() => ({ data })),
+  updateWeatherDate: (data: IWeatherData) => set(() => ({ data })),
 }));
 
 interface IUseGetHourlyDayOfWeak {
   day: string;
-  uptadeDayOfWeek: (day: string) => void;
+  updateDayOfWeek: (day: string) => void;
 }
 
-export const useGetHourlyDayOfWeak = create<IUseGetHourlyDayOfWeak>((set) => ({
+export const useGetHourlyDayOfWeek = create<IUseGetHourlyDayOfWeak>((set) => ({
   day: getWeek(new Date().getDay()),
-  uptadeDayOfWeek: (day: string) => set(() => ({ day })),
+  updateDayOfWeek: (day: string) => set(() => ({ day })),
 }));
 
 export const useDataUnit = create<IUnits>((set) => ({
@@ -55,20 +55,20 @@ export const useDataUnit = create<IUnits>((set) => ({
     set(() => ({ temperature_unit })),
   uptadeWindSpeedUnit: (wind_speed_unit: IUnits["wind_speed_unit"]) =>
     set(() => ({ wind_speed_unit })),
-  uptadePrecipotationUnit: (precipitation_unit: IUnits["precipitation_unit"]) =>
+  uptadePrecipitationUnit: (precipitation_unit: IUnits["precipitation_unit"]) =>
     set(() => ({ precipitation_unit })),
 }));
 
 interface IUseServiceHook {
   loading: boolean;
   error: string;
-  uptadeLoading: (loading: boolean) => void;
-  uptadeError: (error: string) => void;
+  updateLoading: (loading: boolean) => void;
+  updateError: (error: string) => void;
 }
 
 export const useServiceHook = create<IUseServiceHook>((set) => ({
   loading: false,
   error: "",
-  uptadeLoading: (loading: boolean) => set(() => ({ loading })),
-  uptadeError: (error: string) => set(() => ({ error })),
+  updateLoading: (loading: boolean) => set(() => ({ loading })),
+  updateError: (error: string) => set(() => ({ error })),
 }));

@@ -53,9 +53,10 @@ export function getWeek(day: number): string {
 }
 
 export function weatherCodeImage(
-  weather_code: number | number[],
+  weather_code: number | number[] | undefined,
   className: string,
 ): ReactNode {
+  // if (!weather_code) return;
   if (typeof weather_code === "number") {
     if (weather_code === 0)
       return (
@@ -154,7 +155,7 @@ export function weatherCodeImage(
         />
       );
   } else {
-    weather_code.map((item) => {
+    weather_code?.map((item) => {
       if (item === 0)
         return (
           <img

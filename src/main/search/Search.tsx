@@ -1,7 +1,4 @@
-import {
-  useState,
-  // useTransition,
-} from "react";
+import { useState } from "react";
 import "./Search.scss";
 import { cities } from "../../locations/locations";
 import { useWeatherDateState } from "../../store/useStore";
@@ -19,24 +16,24 @@ interface IProps {
 }
 
 export default function Search({ getWeather, loading }: IProps) {
+  // const { getWeather } = useServicee();
   const temperature_unit = useDataUnit((state) => state.temperature_unit);
   const wind_speed_unit = useDataUnit((state) => state.wind_speed_unit);
   const precipitation_unit = useDataUnit((state) => state.precipitation_unit);
 
   const [searchValue, setSearchValue] = useState<string>("");
-  const uptadeWeatherDate = useWeatherDateState(
-    (state) => state.uptadeWeatherDate,
+  const updateWeatherDate = useWeatherDateState(
+    (state) => state.updateWeatherDate,
   );
 
   const [CITIES, setCITIES] = useState<string[]>([]);
 
-  // const [isPending, startTransition] = useTransition();
   const searchValueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toLowerCase() as keyof typeof cities;
     setSearchValue(value);
     const getLocation = () => {
       const res = Object.keys(cities).filter((item) =>
-        item.startsWith(searchValue.toLocaleLowerCase()),
+        item.startsWith(value.toLocaleLowerCase()),
       );
 
       setCITIES(res);
@@ -51,11 +48,21 @@ export default function Search({ getWeather, loading }: IProps) {
       `wind_speed_unit=${wind_speed_unit}`,
       `precipitation_unit=${precipitation_unit}`,
     );
-    uptadeWeatherDate(res);
+    updateWeatherDate(res);
+  };
+
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (CITIES.length === 0) {
+      return;
+    }
+    const selectedCity = CITIES[0] as keyof typeof cities;
+    getCity(cities[selectedCity].latitude, cities[selectedCity].longitude);
+    setSearchValue("");
   };
 
   return (
-    <form className="search">
+    <form className="search" onSubmit={handleSubmit}>
       <img
         className="search_icon"
         src="../../../assets/images/icon-search.svg"
@@ -79,7 +86,7 @@ export default function Search({ getWeather, loading }: IProps) {
           ) : !CITIES.length ? (
             <div className="loading">Not Found</div>
           ) : (
-            CITIES.map((item: string, i: number) => (
+            CITIES.map((item: string) => (
               <div
                 onClick={(e: React.MouseEvent<HTMLDivElement>) => {
                   setSearchValue("");
@@ -90,7 +97,7 @@ export default function Search({ getWeather, loading }: IProps) {
                   );
                 }}
                 className="city"
-                key={i}
+                key={item}
               >
                 {item}
               </div>

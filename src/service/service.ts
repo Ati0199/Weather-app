@@ -13,10 +13,6 @@ export default function useService() {
 
   const PARAMS =
     "timezone=auto&current=temperature_2m,relative_humidity_2m,precipitation,weather_code,apparent_temperature,wind_speed_10m&hourly=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code";
-  // const WIND_SPEED_UNIT = "wind_speed_unit=mph";
-  // const TEMPERTURE_UNIT = "temperature_unit=fahrenheit";
-  // const PRECIPITATION_UNIT = "precipitation_unit=inch";
-  // "&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch"
 
   const getWeather = async (
     latitude: number,
@@ -94,9 +90,3 @@ export default function useService() {
     };
   }
 }
-
-// const getCurentWeather = async <T extends string>(
-//   TEMPERTURE_UNIT: T,
-//   WIND_SPEED_UNIT: T,
-//   PRECIPITATION_UNIT: T,
-// ) => {};

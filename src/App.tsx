@@ -1,6 +1,5 @@
 import "./App.scss";
 import "./normalize.css";
-import { v4 as uuidv4 } from "uuid";
 
 import Logo from "./header/logo/Logo";
 import Units from "./header/units/Units";
@@ -18,11 +17,11 @@ import { useEffect } from "react";
 import { useDataUnit } from "./store/useStore";
 
 import { useWeatherDateState } from "./store/useStore";
-// import { useServiceHook } from "./store/useStore";
 
 import { type IDailyWeather } from "./types";
 import { type IHourlyWeather } from "./types";
 import { type ICurentWeather } from "./types";
+
 export interface IWeatherData {
   currentWeather: ICurentWeather | null;
   dailyWeather: IDailyWeather | null;
@@ -30,18 +29,14 @@ export interface IWeatherData {
 }
 export default function App() {
   const { getWeather, loading } = useService();
+
   const temperature_unit = useDataUnit((state) => state.temperature_unit);
   const wind_speed_unit = useDataUnit((state) => state.wind_speed_unit);
   const precipitation_unit = useDataUnit((state) => state.precipitation_unit);
 
   const uptadeWeatherDate = useWeatherDateState(
-    (state) => state.uptadeWeatherDate,
+    (state) => state.updateWeatherDate,
   );
-  // const [weatherData, setWeatherData] = useState<IWeatherData>({
-  //   currentWeather: null,
-  //   dailyWeather: null,
-  //   hourlyWeather: null,
-  // });
 
   useEffect(() => {
     getWeather(
@@ -50,7 +45,7 @@ export default function App() {
       `temperature_unit=${temperature_unit}`,
       `wind_speed_unit=${wind_speed_unit}`,
       `precipitation_unit=${precipitation_unit}`,
-    ).then((data: any) => uptadeWeatherDate(data));
+    ).then((data: IWeatherData) => uptadeWeatherDate(data));
   }, [temperature_unit, wind_speed_unit, precipitation_unit]);
 
   return (

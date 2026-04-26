@@ -49,7 +49,7 @@ export interface IUnits {
   ) => any;
   uptadeTempUnit: (temperature_unit: IUnits["temperature_unit"]) => any;
   uptadeWindSpeedUnit: (wind_speed_unit: IUnits["wind_speed_unit"]) => any;
-  uptadePrecipotationUnit: (
+  uptadePrecipitationUnit: (
     precipitation_unit: IUnits["precipitation_unit"],
   ) => any;
 }
