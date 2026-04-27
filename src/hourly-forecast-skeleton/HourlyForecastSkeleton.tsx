@@ -1,5 +1,5 @@
 import HourlyForecastCardSkeleton from "../hourly-forecast-card-skeleton/HourlyForecastCardSkeleton";
-import dropdown from "../../../assets/images/icon-dropdown.svg";
+import dropdown from "../../assets/images/icon-dropdown.svg";
 export default function HourlyForecastSkeleton() {
   return (
     <div className="hourly_forecast">
