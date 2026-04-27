@@ -4,4 +4,8 @@ import "./index.scss";
 import "./normalize.css";
 import App from "./App.tsx";
 
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);

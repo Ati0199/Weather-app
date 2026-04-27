@@ -1,11 +1,10 @@
-import { useServiceHook, useWeatherDateState } from "../../store/useStore";
+import { useWeatherDateState } from "../../store/useStore";
 import "./WeatherDetails.scss";
 
 export default function WeatherDetails() {
   const currentWeather = useWeatherDateState(
     (state) => state.data.currentWeather,
   );
-  const loading = useServiceHook((state) => state.loading);
 
   const details = [
     {

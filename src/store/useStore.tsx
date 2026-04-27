@@ -62,13 +62,18 @@ export const useDataUnit = create<IUnits>((set) => ({
 interface IUseServiceHook {
   loading: boolean;
   error: string;
+  responseStatus: boolean;
   updateLoading: (loading: boolean) => void;
   updateError: (error: string) => void;
+  updateResponseStatus: (responseStatus: boolean) => void;
 }
 
 export const useServiceHook = create<IUseServiceHook>((set) => ({
   loading: false,
   error: "",
+  responseStatus: false,
   updateLoading: (loading: boolean) => set(() => ({ loading })),
   updateError: (error: string) => set(() => ({ error })),
+  updateResponseStatus: (responseStatus: boolean) =>
+    set(() => ({ responseStatus })),
 }));

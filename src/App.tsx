@@ -13,10 +13,12 @@ import WeatherInfoSkeleton from "./weather-info-skeleton/WeatherInfoSkeleton";
 import WeatherDetailsSkeleton from "./weather-details-skeleton/WeatherDetailsSkeleton";
 import HourlyForecastSkeleton from "./hourly-forecast-skeleton/HourlyForecastSkeleton";
 
+import ApiError from "./api-error/ApiError";
+
 import useService from "./service/service";
 import { useEffect } from "react";
 
-import { useDataUnit } from "./store/useStore";
+import { useDataUnit, useServiceHook } from "./store/useStore";
 
 import { useWeatherDateState } from "./store/useStore";
 
@@ -31,6 +33,7 @@ export interface IWeatherData {
 }
 export default function App() {
   const { getWeather, loading } = useService();
+  const error = useServiceHook((state) => state.error);
 
   const temperature_unit = useDataUnit((state) => state.temperature_unit);
   const wind_speed_unit = useDataUnit((state) => state.wind_speed_unit);
@@ -56,21 +59,25 @@ export default function App() {
         <Logo />
         <Units />
       </header>
-      <h1 className="title">How’s the sky looking today?</h1>
-      <main className="main">
-        <Search getWeather={getWeather} loading={loading} />
-        <div className="main_content">
-          <div className="left_content">
-            {loading ? <WeatherInfoSkeleton /> : <WeatherInfo />}
-            {loading ? <WeatherDetailsSkeleton /> : <WeatherDetails />}
-            <DailyForecast />
-          </div>
+      {error === "" ? (
+        <main className="main">
+          <h1 className="title">How’s the sky looking today?</h1>
+          <Search getWeather={getWeather} loading={loading} />
+          <div className="main_content">
+            <div className="left_content">
+              {loading ? <WeatherInfoSkeleton /> : <WeatherInfo />}
+              {loading ? <WeatherDetailsSkeleton /> : <WeatherDetails />}
+              <DailyForecast />
+            </div>
 
-          <div className="right_content">
-            {loading ? <HourlyForecastSkeleton /> : <HourlyForecast />}
+            <div className="right_content">
+              {loading ? <HourlyForecastSkeleton /> : <HourlyForecast />}
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      ) : (
+        <ApiError getWeather={getWeather} />
+      )}
     </div>
   );
 }

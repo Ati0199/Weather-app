@@ -4,6 +4,9 @@ import { useServiceHook } from "../store/useStore";
 export default function useHttp() {
   const error = useServiceHook((state) => state.error);
   const loading = useServiceHook((state) => state.loading);
+  const updateResponseStatus = useServiceHook(
+    (state) => state.updateResponseStatus,
+  );
   const updateError = useServiceHook((state) => state.updateError);
   const updateLoading = useServiceHook((state) => state.updateLoading);
 
@@ -12,6 +15,7 @@ export default function useHttp() {
       updateLoading(true);
 
       const response = await fetch(url);
+      updateResponseStatus(response.ok);
       if (!response.ok) {
         throw new Error(`Could not fetch ${url}, status: ${response.status}`);
       }
