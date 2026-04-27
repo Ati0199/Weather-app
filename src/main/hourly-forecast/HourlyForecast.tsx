@@ -32,7 +32,6 @@ export default function HourlyForecast() {
   const timeInWeek = hourlyInfoGetDay(
     hourlyWeather?.hourly.time as string[],
   ) as string[][];
-  console.log(new Date().getHours());
 
   return (
     <div className="hourly_forecast">

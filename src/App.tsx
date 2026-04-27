@@ -10,6 +10,8 @@ import WeatherDetails from "./main/weather-details/WeatherDetails";
 import DailyForecast from "./main/daily-forecast/DailyForecast";
 
 import WeatherInfoSkeleton from "./weather-info-skeleton/WeatherInfoSkeleton";
+import WeatherDetailsSkeleton from "./weather-details-skeleton/WeatherDetailsSkeleton";
+import HourlyForecastSkeleton from "./hourly-forecast-skeleton/HourlyForecastSkeleton";
 
 import useService from "./service/service";
 import { useEffect } from "react";
@@ -55,17 +57,17 @@ export default function App() {
         <Units />
       </header>
       <h1 className="title">How’s the sky looking today?</h1>
-      <main>
+      <main className="main">
         <Search getWeather={getWeather} loading={loading} />
         <div className="main_content">
           <div className="left_content">
             {loading ? <WeatherInfoSkeleton /> : <WeatherInfo />}
-            <WeatherDetails />
+            {loading ? <WeatherDetailsSkeleton /> : <WeatherDetails />}
             <DailyForecast />
           </div>
 
           <div className="right_content">
-            <HourlyForecast />
+            {loading ? <HourlyForecastSkeleton /> : <HourlyForecast />}
           </div>
         </div>
       </main>

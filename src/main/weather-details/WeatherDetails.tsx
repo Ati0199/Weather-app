@@ -27,22 +27,16 @@ export default function WeatherDetails() {
         <div key={detail.label} className="weather_details_card ">
           <h3 className="weather_details_card-label">{detail.label}</h3>
           <span className="weather_details_card-value">
-            {loading ? (
-              "-"
-            ) : (
-              <>
-                {
-                  currentWeather?.current[
-                    detail.value as keyof typeof currentWeather.current
-                  ]
-                }
-                {
-                  currentWeather?.current_units[
-                    detail.units as keyof typeof currentWeather.current_units
-                  ]
-                }
-              </>
-            )}
+            {
+              currentWeather?.current[
+                detail.value as keyof typeof currentWeather.current
+              ]
+            }
+            {
+              currentWeather?.current_units[
+                detail.units as keyof typeof currentWeather.current_units
+              ]
+            }
           </span>
         </div>
       ))}

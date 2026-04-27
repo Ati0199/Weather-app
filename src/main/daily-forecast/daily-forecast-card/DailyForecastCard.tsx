@@ -5,7 +5,7 @@ import { useServiceHook, useWeatherDateState } from "../../../store/useStore";
 
 export default function DailyForecastCard() {
   const loading = useServiceHook((state) => state.loading);
-  console.log(loading);
+
   const data = useWeatherDateState((state) => state.data.dailyWeather);
   if (!data) return <div>Loading</div>;
   const time = data.daily.time;
