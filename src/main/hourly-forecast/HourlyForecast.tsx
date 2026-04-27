@@ -9,6 +9,8 @@ import { getWeek } from "../../functions/Functions";
 import { useWeatherDateState } from "../../store/useStore";
 import { useGetHourlyDayOfWeek } from "../../store/useStore";
 
+import dropdown from "../../../assets/images/icon-dropdown.svg";
+
 export default function HourlyForecast() {
   const loading = useServiceHook((state) => state.loading);
 
@@ -43,7 +45,7 @@ export default function HourlyForecast() {
           ) : (
             <span className="hourly_forecast_day">{day}</span>
           )}
-          <img src="../../../assets/images/icon-dropdown.svg" alt="" />
+          <img src={dropdown} alt="" />
         </div>
         {click ? (
           <div className="days_dropdown">

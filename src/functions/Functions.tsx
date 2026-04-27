@@ -1,5 +1,14 @@
 import type { ReactNode } from "react";
 import type { IHourlyWeather } from "../types";
+import sunny from "./../../assets/images/icon-sunny.webp";
+import partlyCloudy from "./../../assets/images/icon-partly-cloudy.webp";
+import fog from "./../../assets/images/icon-fog.webp";
+import drizzle from "./../../assets/images/icon-drizzle.webp";
+import rain from "./../../assets/images/icon-rain.webp";
+import snowFall from "./../../assets/images/snow-fall.png";
+import snow from "./../../assets/images/icon-snow.webp";
+import rainShowers from "./../../assets/images/rain-showers.png";
+import thunderstorms from "./../../assets/images/thunderstorms.svg";
 
 export function getMonth(month: number): string {
   switch (month) {
@@ -59,199 +68,54 @@ export function weatherCodeImage(
   // if (!weather_code) return;
   if (typeof weather_code === "number") {
     if (weather_code === 0)
-      return (
-        <img
-          className={className}
-          src="./../../assets/images/icon-sunny.webp"
-          alt=""
-        />
-      );
+      return <img className={className} src={sunny} alt="" />;
     if (weather_code > 0 && weather_code < 4)
-      return (
-        <img
-          className={className}
-          src="./../../assets/images/icon-partly-cloudy.webp"
-          alt=""
-        />
-      );
+      return <img className={className} src={partlyCloudy} alt="" />;
     if (weather_code === 45 || weather_code === 48)
-      return (
-        <img
-          className={className}
-          src="./../../assets/images/icon-fog.webp"
-          alt=""
-        />
-      );
+      return <img className={className} src={fog} alt="" />;
     if (weather_code === 51 || weather_code === 53 || weather_code === 55)
-      return (
-        <img
-          className={className}
-          src="./../../assets/images/icon-drizzle.webp"
-          alt=""
-        />
-      );
+      return <img className={className} src={drizzle} alt="" />;
     if (weather_code === 56 || weather_code === 57)
-      return (
-        <img
-          className={className}
-          src="./../../assets/images/icon-drizzle.webp"
-          alt=""
-        />
-      );
+      return <img className={className} src={drizzle} alt="" />;
     if (weather_code === 61 || weather_code === 63 || weather_code === 65)
-      return (
-        <img
-          className={className}
-          src="./../../assets/images/icon-rain.webp"
-          alt=""
-        />
-      );
+      return <img className={className} src={rain} alt="" />;
     if (weather_code === 66 || weather_code === 67)
-      return (
-        <img
-          className="{className}"
-          src="./../../assets/images/icon-rain.webp"
-          alt=""
-        />
-      );
+      return <img className="{className}" src={rain} alt="" />;
     if (weather_code === 71 || weather_code === 73 || weather_code === 75)
-      return (
-        <img
-          className={className}
-          src="./../../assets/images/snow-fall.png"
-          alt=""
-        />
-      );
+      return <img className={className} src={snowFall} alt="" />;
     if (weather_code === 77)
-      return (
-        <img
-          className={className}
-          src="./../../assets/images/icon-snow.webp"
-          alt=""
-        />
-      );
+      return <img className={className} src={snow} alt="" />;
     if (weather_code === 80 || weather_code === 81 || weather_code === 82)
-      return (
-        <img
-          className={className}
-          src="./../../assets/images/rain-showers.png"
-          alt=""
-        />
-      );
+      return <img className={className} src={rainShowers} alt="" />;
     if (weather_code === 85 || weather_code === 86)
-      return (
-        <img
-          className={className}
-          src="./../../assets/images/rain-showers.png"
-          alt=""
-        />
-      );
+      return <img className={className} src={rainShowers} alt="" />;
     if (weather_code >= 95 || weather_code <= 99)
-      return (
-        <img
-          className={className}
-          src="./../../assets/images/thunderstorms.svg"
-          alt=""
-        />
-      );
+      return <img className={className} src={thunderstorms} alt="" />;
   } else {
     weather_code?.map((item) => {
-      if (item === 0)
-        return (
-          <img
-            className={className}
-            src="./../../assets/images/icon-sunny.webp"
-            alt=""
-          />
-        );
+      if (item === 0) return <img className={className} src={sunny} alt="" />;
       if (item > 0 && item < 4)
-        return (
-          <img
-            className={className}
-            src="./../../assets/images/icon-partly-cloudy.webp"
-            alt=""
-          />
-        );
+        return <img className={className} src={partlyCloudy} alt="" />;
       if (item === 45 || item === 48)
-        return (
-          <img
-            className={className}
-            src="./../../assets/images/icon-fog.webp"
-            alt=""
-          />
-        );
+        return <img className={className} src={fog} alt="" />;
       if (item === 51 || item === 53 || item === 55)
-        return (
-          <img
-            className={className}
-            src="./../../assets/images/icon-drizzle.webp"
-            alt=""
-          />
-        );
+        return <img className={className} src={drizzle} alt="" />;
       if (item === 56 || item === 57)
-        return (
-          <img
-            className={className}
-            src="./../../assets/images/icon-drizzle.webp"
-            alt=""
-          />
-        );
+        return <img className={className} src={drizzle} alt="" />;
       if (item === 61 || item === 63 || item === 65)
-        return (
-          <img
-            className={className}
-            src="./../../assets/images/icon-rain.webp"
-            alt=""
-          />
-        );
+        return <img className={className} src={rain} alt="" />;
       if (item === 66 || item === 67)
-        return (
-          <img
-            className={className}
-            src="./../../assets/images/icon-rain.webp"
-            alt=""
-          />
-        );
+        return <img className={className} src={rain} alt="" />;
       if (item === 71 || item === 73 || item === 75)
-        return (
-          <img
-            className={className}
-            src="./../../assets/images/snow-fall.png"
-            alt=""
-          />
-        );
+        return <img className={className} src={snowFall} alt="" />;
       if (item === 77)
-        return (
-          <img
-            className={className}
-            src="./../../assets/images/icon-snow.webp"
-            alt=""
-          />
-        );
+        return <img className={className} src={snowFall} alt="" />;
       if (item === 80 || item === 81 || item === 82)
-        return (
-          <img
-            className={className}
-            src="./../../assets/images/rain-showers.png"
-            alt=""
-          />
-        );
+        return <img className={className} src={rainShowers} alt="" />;
       if (item === 85 || item === 86)
-        return (
-          <img
-            className={className}
-            src="./../../assets/images/rain-showers.png"
-            alt=""
-          />
-        );
+        return <img className={className} src={rainShowers} alt="" />;
       if (item >= 95 && item <= 99)
-        return (
-          <img
-            className={className}
-            src="./../../assets/images/thunderstorms.svg"
-            alt=""
-          />
-        );
+        return <img className={className} src={thunderstorms} alt="" />;
     });
   }
 }

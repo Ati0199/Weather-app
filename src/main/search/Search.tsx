@@ -3,7 +3,7 @@ import "./Search.scss";
 import { cities } from "../../locations/locations";
 import { useWeatherDateState } from "../../store/useStore";
 import { useDataUnit } from "../../store/useStore";
-
+import search from "../../../assets/images/icon-search.svg";
 interface IProps {
   getWeather: (
     latitude: number,
@@ -63,11 +63,7 @@ export default function Search({ getWeather, loading }: IProps) {
 
   return (
     <form className="search" onSubmit={handleSubmit}>
-      <img
-        className="search_icon"
-        src="../../../assets/images/icon-search.svg"
-        alt="search_icon"
-      />
+      <img className="search_icon" src={search} alt="search_icon" />
       <input
         onChange={searchValueHandler}
         value={searchValue}
