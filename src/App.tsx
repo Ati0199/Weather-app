@@ -26,6 +26,8 @@ import { type IDailyWeather } from "./types";
 import { type IHourlyWeather } from "./types";
 import { type ICurentWeather } from "./types";
 
+import { SpeedInsights } from "@vercel/speed-insights/react";
+
 export interface IWeatherData {
   currentWeather: ICurentWeather | null;
   dailyWeather: IDailyWeather | null;
@@ -78,6 +80,7 @@ export default function App() {
       ) : (
         <ApiError getWeather={getWeather} />
       )}
+      <SpeedInsights />
     </div>
   );
 }
