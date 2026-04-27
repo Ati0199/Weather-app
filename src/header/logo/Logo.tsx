@@ -1,3 +1,5 @@
+import logo from "../../assets/images/logo.svg";
+
 export default function Logo() {
-  return <img src="../../assets/images/logo.svg" alt="logo" />;
+  return <img src={logo} alt="logo" />;
 }
